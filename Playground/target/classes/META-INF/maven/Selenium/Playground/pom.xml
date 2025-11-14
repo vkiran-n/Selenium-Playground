@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Selenium</groupId>
+	<artifactId>Playground</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Selenium-Playground</name>
+	<description>Selenium-Playground</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>21</maven.compiler.source>
+		<maven.compiler.target>21</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<!--add below dependency if this error appears while clean install/test
+	java.lang.IllegalAccessError: class lombok.javac.apt.LombokProcessor cannot access 
+	class com.sun.tools.javac.processing.JavacProcessingEnvironment -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.38.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>7.11.0</version>
+			<scope>test</scope>
+		</dependency>
+		<!--		[RemoteTestNG] detected TestNG version 7.10.2
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder"
+SLF4J: Defaulting to no-operation (NOP) logger implementation -->
+		<!--https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.25.2</version>
+			<scope>test</scope>
+		</dependency>
+	<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+		    <groupId>com.mysql</groupId>
+		    <artifactId>mysql-connector-j</artifactId>
+		    <version>9.5.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>5.4.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.4.1</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!--
+			https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-clean-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.5.0</version>
+			</plugin>
+	<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <version>3.14.0</version>
+			</plugin>
+			<!--
+			https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.5.4</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${project.basedir}/src/test/java/script/testngSeq.xml</suiteXmlFile>
+						<!--<suiteXmlFile>${project.basedir}/src/test/java/testng/testngParallel_local.xml</suiteXmlFile>-->
+						<!--<suiteXmlFile>${project.basedir}/src/test/java/testngGrid/testngParallel_grid.xml</suiteXmlFile>-->
+					</suiteXmlFiles>
+					<!-- Surefire report works only when this is enabled -->
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
